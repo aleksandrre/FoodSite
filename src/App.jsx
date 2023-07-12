@@ -1,24 +1,21 @@
-import { useState } from "react";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import "./App.css";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import HeadlineCards from "./components/HeadlineCards";
-import Food from "./components/Food";
-import Category from "./components/Category";
+import Context from "./Context/Context.jsx";
+import MainPage from "./pages/mainpage/MainPage.jsx";
+import Cart from "./pages/cart/Cart.jsx";
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Hero />
-      <HeadlineCards />
-      <Food />
-      <Category />
-    </div>
+    <Context>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </BrowserRouter>
+    </Context>
   );
-}
+};
 
 export default App;

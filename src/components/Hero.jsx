@@ -1,6 +1,7 @@
 import React from "react";
 
 const Hero = () => {
+  console.log("Hero.jsx");
   return (
     <div className="max-w-[1640px] mx-auto p-4">
       <div className="max-h-[500px] relative">

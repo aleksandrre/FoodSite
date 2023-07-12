@@ -1,0 +1,15 @@
+.maindiv {
+  display: flex;
+  gap: 2.5px;
+}
+
+.card {
+  height: 200px;
+  background: rgb(48, 207, 232);
+  flex: 1;
+  transition: 0.3s;
+}
+.card:hover {
+  flex: 3;
+  background: rgb(12, 171, 195);
+}

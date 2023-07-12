@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   AiOutlineClose,
   AiOutlineMenu,
@@ -10,8 +10,13 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { FaUserFriends, FaWallet } from "react-icons/fa";
 import { MdFavorite, MdHelp } from "react-icons/md";
 
+import { Link } from "react-router-dom";
+import { MyContext } from "../Context/Context";
+import { data } from "../data/data";
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+  const { setFoods } = useContext(MyContext);
+  console.log("Navbar.jsx");
   return (
     <div className="max-w-[1640px] mx-auto flex justify-between items-center p-4">
       {/* Left Div */}
@@ -31,16 +36,26 @@ const Navbar = () => {
       <div className="bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
         <AiOutlineSearch size={20} />
         <input
+          onChange={(e) =>
+            setFoods(
+              data.filter((item, index) =>
+                item.name.toLowerCase().includes(e.target.value.toLowerCase())
+              )
+            )
+          }
           className="bg-transparent p-2 w-full focus:outline-none "
           type="text"
           placeholder="Search foods"
         />
       </div>
       {/* Cart button */}
-      <button className="bg-black text-white hidden md:flex items-center py-2 rounded-full">
-        <BsFillCartFill size={20} className="mr-2" />
-        Cart
-      </button>
+      <Link to="/cart">
+        <button className="bg-black text-white hidden md:flex items-center py-2 rounded-full">
+          <BsFillCartFill size={20} className="mr-2" />
+          Cart
+        </button>
+      </Link>
+
       {/* Mobile Menu */}
       {/* Overlay */}
       {nav ? (

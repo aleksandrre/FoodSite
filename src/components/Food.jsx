@@ -1,26 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { data } from "../data/data.js";
 
+import { MyContext } from "../Context/Context.jsx";
 const Food = () => {
-  const [foods, setFoods] = useState(data);
-
-  //   Filter Type burgers/pizza/etc
-  const filterType = (category) => {
-    setFoods(
-      data.filter((item) => {
-        return item.category === category;
-      })
-    );
-  };
-
-  //   Filter by price
-  const filterPrice = (price) => {
-    setFoods(
-      data.filter((item) => {
-        return item.price === price;
-      })
-    );
-  };
+  const { foods, setFoods, filterType, addToCart, filterPrice } =
+    useContext(MyContext);
+  console.log("Food.jsx");
 
   return (
     <div className="max-w-[1640px] m-auto px-4 py-12">
@@ -111,13 +96,14 @@ const Food = () => {
               alt={item.name}
               className="w-full h-[200px] object-cover rounded-t-lg"
             />
-            <div className="flex justify-between px-2 py-4">
+            <div className="flex justify-between px-2 py-4 items-center">
               <p className="font-bold">{item.name}</p>
               <p>
                 <span className="bg-orange-500 text-white p-1 rounded-full">
                   {item.price}
                 </span>
               </p>
+              <button onClick={() => addToCart(item.id)}>add to cart</button>
             </div>
           </div>
         ))}
