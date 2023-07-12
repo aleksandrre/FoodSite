@@ -50,7 +50,7 @@ const Navbar = () => {
       </div>
       {/* Cart button */}
       <Link to="/cart">
-        <button className="bg-black text-white hidden md:flex items-center py-2 rounded-full">
+        <button className="bg-black text-white  flex items-center py-2 rounded-full">
           <BsFillCartFill size={20} className="mr-2" />
           Cart
         </button>
