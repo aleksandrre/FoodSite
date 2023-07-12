@@ -11,6 +11,7 @@ const getDefaultCart = () => {
   return cart;
 };
 const Context = (props) => {
+  const [state, setState] = useState(true);
   const [foods, setFoods] = useState(data);
   const [cartItems, setCartItems] = useState(getDefaultCart());
   //add to cart
@@ -53,6 +54,8 @@ const Context = (props) => {
     removeFromCart,
     cartItems,
     inputchange,
+    state,
+    setState,
   };
 
   return (

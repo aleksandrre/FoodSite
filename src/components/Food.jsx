@@ -89,7 +89,7 @@ const Food = () => {
         {foods.map((item, index) => (
           <div
             key={index}
-            className="border shadow-lg rounded-lg hover:scale-105 duration-300"
+            className="border shadow-lg rounded-lg hover:scale-105  duration-300"
           >
             <img
               src={item.image}
@@ -100,10 +100,15 @@ const Food = () => {
               <p className="font-bold">{item.name}</p>
               <p>
                 <span className="bg-orange-500 text-white p-1 rounded-full">
-                  {item.price}
+                  {item.price + "ლ"}
                 </span>
               </p>
-              <button onClick={() => addToCart(item.id)}>add to cart</button>
+              <button
+                onClick={() => addToCart(item.id)}
+                className="hover:bg-slate-600 hover:text-white"
+              >
+                add to cart
+              </button>
             </div>
           </div>
         ))}
